@@ -1,0 +1,20 @@
+version: '3.8'
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: micro-eci-web
+    ports:
+      - "8087:6000"
+  db:
+    image: mongo:6.0
+    container_name: micro-eci-mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb:/data/db
+      - mongodb_config:/data/configdb
+volumes:
+  mongodb:
+  mongodb_config:

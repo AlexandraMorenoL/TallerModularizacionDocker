@@ -1,0 +1,14 @@
+# Conectarse por SSH
+ssh -i tu_llave.pem ec2-user@EC2_PUBLIC_DNS
+
+# Instalar Docker (Amazon Linux 2023)
+sudo dnf -y update
+sudo dnf -y install docker
+sudo systemctl enable --now docker
+sudo usermod -aG docker ec2-user
+exit
+# Reingresar por SSH:
+ssh -i tu_llave.pem ec2-user@EC2_PUBLIC_DNS
+
+# Ejecutar contenedor desde Docker Hub (reemplaza <usuario>)
+docker run -d -p 42000:6000 --name microeci <usuario>/microframework-eci:latest
